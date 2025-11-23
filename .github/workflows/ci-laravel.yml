@@ -2,7 +2,8 @@
 name: CI (Laravel)
 
 # Bloc que defineix QUAN s’executa el workflow.
-on:
+on: 
+
   # 1) Es dispara en fer push...
   push:
     # ...però només si el push va a la branca 'main'.
