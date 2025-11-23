@@ -116,7 +116,12 @@ jobs:
       # Això desencadenarà el desplegament automàtic a Laravel Cloud.
       - name: Cridar a Laravel Cloud Deploy Hook
         run: |
-          curl -X POST "${{ secrets.LARAVEL_CLOUD_DEPLOY_HOOK }}"
-        env:
-          # Utilitzem el secret configurat a GitHub per guardar la URL del hook.
-          LARAVEL_CLOUD_DEPLOY_HOOK: ${{ secrets.LARAVEL_CLOUD_DEPLOY_HOOK }}
+          # Eliminem espais en blanc al principi i final de la URL
+          HOOK_URL=$(echo "${{ secrets.LARAVEL_CLOUD_DEPLOY_HOOK }}" | xargs)
+          # Verifiquem que la URL no estigui buida
+          if [ -z "$HOOK_URL" ]; then
+            echo "Error: LARAVEL_CLOUD_DEPLOY_HOOK està buit o no està configurat"
+            exit 1
+          fi
+          # Cridem al Deploy Hook
+          curl -X POST "$HOOK_URL"
