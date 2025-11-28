@@ -14,7 +14,7 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::orderBy('nom')->get();
+        $pokemons = Pokemon::orderBy('name')->get();
         
         return view('pokemons.index', compact('pokemons'));
     }
@@ -34,9 +34,9 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|min:1|max:255',
-        ]);
+        //$request->validate([
+       //     'name' => 'required|string|min:1|max:255',
+       // ]);
 
         $nombrePokemon = strtolower(trim($request->input('name')));
 
