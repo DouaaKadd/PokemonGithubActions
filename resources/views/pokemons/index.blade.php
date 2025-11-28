@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Lista de Pokémon - PokeDex</title>
+    <title>PokeDex</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
@@ -32,7 +32,7 @@
         .card {
             border: none;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(239, 169, 169, 0.5);
             margin-bottom: 30px;
             background: var(--pokemon-dark-gray);
             border: 2px solid var(--pokemon-gray);
