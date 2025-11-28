@@ -14,7 +14,7 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::orderBy('name')->get();
+        $pokemons = Pokemon::orderBy('nom')->get();
         
         return view('pokemons.index', compact('pokemons'));
     }
