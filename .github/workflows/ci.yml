@@ -108,15 +108,22 @@ jobs:
     
     # Passos del job de deploy.
     steps:
-      # Pas 1: confirmar que els tests han passat.
+      # Pas 0: Checkout (necessari per alguns casos)
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      # Pas 1: Verificar que els tests han passat (abans de qualsevol altra cosa)
       - name: Verificar que els tests han passat
         run: |
+          echo "Verificant resultat dels tests..."
+          echo "Resultat del job tests: ${{ needs.tests.result }}"
           if [ "${{ needs.tests.result }}" != "success" ]; then
-            echo "Error: Els tests no han passat. El resultat és: ${{ needs.tests.result }}"
+            echo "❌ ERROR: Els tests NO han passat. El resultat és: ${{ needs.tests.result }}"
+            echo "El desplegament NO es durà a terme."
             exit 1
           fi
-          echo " Tots els tests han passat correctament"
-          echo " Iniciant desplegament a producció..."
+          echo "✅ Tots els tests han passat correctament"
+          echo "🚀 Iniciant desplegament a producció..."
       
       # Pas 2: cridar al Deploy Hook de Laravel Cloud.
       # Això desencadenarà el desplegament automàtic a Laravel Cloud.
