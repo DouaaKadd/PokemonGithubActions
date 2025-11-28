@@ -103,14 +103,20 @@ jobs:
       github.event_name == 'push' && 
       github.ref == 'refs/heads/main' &&
       needs.tests.result == 'success'
+    # Assegurar que si el job anterior falla, aquest no s'executa
+    continue-on-error: false
     
     # Passos del job de deploy.
     steps:
       # Pas 1: confirmar que els tests han passat.
       - name: Verificar que els tests han passat
         run: |
-          echo " Tots els tests han passat correctament"
-          echo " Iniciant desplegament a producció..."
+          if [ "${{ needs.tests.result }}" != "success" ]; then
+            echo "Error: Els tests no han passat. El resultat és: ${{ needs.tests.result }}"
+            exit 1
+          fi
+          echo "✅ Tots els tests han passat correctament"
+          echo "🚀 Iniciant desplegament a producció..."
       
       # Pas 2: cridar al Deploy Hook de Laravel Cloud.
       # Això desencadenarà el desplegament automàtic a Laravel Cloud.
