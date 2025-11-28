@@ -115,8 +115,8 @@ jobs:
             echo "Error: Els tests no han passat. El resultat és: ${{ needs.tests.result }}"
             exit 1
           fi
-          echo "✅ Tots els tests han passat correctament"
-          echo "🚀 Iniciant desplegament a producció..."
+          echo " Tots els tests han passat correctament"
+          echo " Iniciant desplegament a producció..."
       
       # Pas 2: cridar al Deploy Hook de Laravel Cloud.
       # Això desencadenarà el desplegament automàtic a Laravel Cloud.
