@@ -34,9 +34,9 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        //$request->validate([
-       //     'name' => 'required|string|min:1|max:255',
-       // ]);
+        $request->validate([
+            'name' => 'required|string|min:1|max:255',
+        ]);
 
         $nombrePokemon = strtolower(trim($request->input('name')));
 
@@ -68,7 +68,7 @@ class PokemonController extends Controller
             $data = $response->json();
 
             // Guardar o actualizar el Pokémon en la base de datos
-            Pokemon::updateOrCreate(
+            /*Pokemon::updateOrCreate(
                 ['name' => $data['name']],
                 [
                     'base_experience' => $data['base_experience'] ?? null,
@@ -77,7 +77,7 @@ class PokemonController extends Controller
                     'sprite_url' => $data['sprites']['front_default'] ?? null,
                 ]
             );
-
+*/
             return redirect()->route('pokemons.index')
                 ->with('success', "¡Pokémon '{$data['name']}' guardado correctamente!");
                 
