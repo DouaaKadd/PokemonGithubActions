@@ -76,7 +76,7 @@ jobs:
           # 5.4 Apliquem migracions perquè les taules existeixin abans de provar.
           # --force evita que Artisan demani confirmació en entorns no interactius.
           php artisan migrate --force
-
+ 
       # Pas 6: executar els tests de Laravel.
       - name: Run tests
         # --no-coverage: no calculem cobertura (més ràpid per a una demo bàsica).
