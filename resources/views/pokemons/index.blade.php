@@ -32,7 +32,7 @@
         .card {
             border: none;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(207, 228, 20, 0.5);
+            box-shadow: 0 10px 40px rgba(48, 228, 20, 0.5);
             margin-bottom: 30px;
             background: var(--pokemon-dark-gray);
             border: 2px solid var(--pokemon-gray);
